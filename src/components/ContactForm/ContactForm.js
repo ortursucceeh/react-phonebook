@@ -18,39 +18,36 @@ class ContactForm extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Phonebook</h2>
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <label htmlFor="name" className="form-label">
-                Name
-              </label>
-              <input
-                type="text"
-                name="name"
-                className="form-control"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="number" className="form-label">
-                Number
-              </label>
-              <input
-                type="tel"
-                name="number"
-                className="form-control"
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                required
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Add Contact
-            </button>
-          </form>
-        </div>
+      <div className={css['contact-form']}>
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <label htmlFor="name" className="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              className="form-control"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="number" className="form-label">
+              Number
+            </label>
+            <input
+              type="tel"
+              name="number"
+              className="form-control"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Add Contact
+          </button>
+        </form>
       </div>
     );
   }

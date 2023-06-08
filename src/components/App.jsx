@@ -1,14 +1,13 @@
 import { Component } from "react";
-import css from './App.module.css';
-import Phonebook from "./ContactForm/ContactForm";
 import { nanoid } from "nanoid";
 import Contacts from "./Contacts/Contacts";
+import Filter from "./Filter/Filter";
+import ContactForm from "./ContactForm/ContactForm";
+import css from './App.module.css';
 
 export class App extends Component {
   state = {
     contacts: [],
-    name: '',
-    number: '',
     filter: ''
   }
 
@@ -17,15 +16,26 @@ export class App extends Component {
       ...data,
       id: nanoid(),
     }
-    console.log('Creating user', newUser)
     this.setState(prevState => ({ ...prevState, contacts: prevState.contacts.concat([newUser]) }))
-    console.log('this.state.contacts :>> ', this.state.contacts);
   }
 
+  handleFilterChange = evt => {
+    const { value } = evt.target;
+    console.log('value :>> ', value);
+    this.setState(prevState => ({
+      ...prevState,
+      filter: value,
+    }))
+  }
+  
   render() {
     return (<div className={css['app__wrapper']}>
-      <Phonebook createUser={this.createUser} />
-      <Contacts contacts={this.state.contacts}/>
+      <h1>Phonebook</h1>
+      <ContactForm createUser={this.createUser} />
+      <h2>Contacts</h2>
+      <Filter onChange={this.handleFilterChange } />
+      <hr/>
+      <Contacts contacts={this.state.contacts} filter={this.state.filter}/>
     </div>)
   }
 }
