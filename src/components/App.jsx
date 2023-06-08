@@ -1,13 +1,15 @@
 import { Component } from "react";
 import css from './App.module.css';
-import Phonebook from "./Phonebook/Phonebook";
+import Phonebook from "./ContactForm/ContactForm";
 import { nanoid } from "nanoid";
 import Contacts from "./Contacts/Contacts";
 
 export class App extends Component {
   state = {
     contacts: [],
-    name: ''
+    name: '',
+    number: '',
+    filter: ''
   }
 
   createUser = (data) => {

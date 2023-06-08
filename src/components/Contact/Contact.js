@@ -7,7 +7,9 @@ class Contact extends Component {
     console.log('contact :>> ', contact);
 
     return (
-      <li className={`${css['contact']} list-group-item`}>{contact.name}</li>
+      <li className={`${css['contact']} list-group-item`}>
+        {contact.name}: {contact.number}
+      </li>
     );
   }
 }

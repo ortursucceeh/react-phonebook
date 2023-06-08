@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import css from './Phonebook.module.css';
+import css from './ContactForm.module.css';
 
-class Phonebook extends Component {
+class ContactForm extends Component {
   handleSubmit = evt => {
     const { createUser } = this.props;
     evt.preventDefault();
@@ -56,4 +56,4 @@ class Phonebook extends Component {
   }
 }
 
-export default Phonebook;
+export default ContactForm;
