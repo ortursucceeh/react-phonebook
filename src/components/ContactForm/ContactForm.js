@@ -3,7 +3,7 @@ import css from './ContactForm.module.css';
 
 class ContactForm extends Component {
   handleSubmit = evt => {
-    const { createUser } = this.props;
+    const { createContact } = this.props;
     evt.preventDefault();
     const form = evt.currentTarget;
     const name = form.name.value;
@@ -12,7 +12,7 @@ class ContactForm extends Component {
       name,
       number,
     };
-    createUser(userData);
+    createContact(userData);
     form.reset();
   };
 
@@ -29,6 +29,7 @@ class ContactForm extends Component {
               name="name"
               className="form-control"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+              placeholder="Cristiano Ronaldo"
               required
             />
           </div>
@@ -40,7 +41,9 @@ class ContactForm extends Component {
               type="tel"
               name="number"
               className="form-control"
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              placeholder="227-91-26"
               required
             />
           </div>

@@ -11,12 +11,25 @@ export class App extends Component {
     filter: ''
   }
 
-  createUser = (data) => {
+  createContact = (data) => {
     const newUser = {
       ...data,
       id: nanoid(),
     }
+
+    if (this.state.contacts.some(contact => contact.name === newUser.name)) {
+      alert(`${newUser.name} already in contacts.`)
+      return
+    }
+
     this.setState(prevState => ({ ...prevState, contacts: prevState.contacts.concat([newUser]) }))
+  }
+
+  deleteContact = (id) => {
+    this.setState(prevState => ({
+      ...prevState,
+      contacts: prevState.contacts.filter(contact => contact.id !== id)
+    }))
   }
 
   handleFilterChange = evt => {
@@ -30,12 +43,12 @@ export class App extends Component {
   
   render() {
     return (<div className={css['app__wrapper']}>
-      <h1>Phonebook</h1>
-      <ContactForm createUser={this.createUser} />
-      <h2>Contacts</h2>
+      <h1 className={css['app__header']}>Phonebook📘</h1>
+      <ContactForm createContact={this.createContact} />
+      <h2>Contacts👁‍🗨</h2>
       <Filter onChange={this.handleFilterChange } />
       <hr/>
-      <Contacts contacts={this.state.contacts} filter={this.state.filter}/>
+      <Contacts contacts={this.state.contacts} filter={this.state.filter} deleteContact={ this.deleteContact }/>
     </div>)
   }
 }

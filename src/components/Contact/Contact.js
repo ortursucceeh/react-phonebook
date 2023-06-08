@@ -3,11 +3,20 @@ import css from './Contact.module.css';
 
 class Contact extends Component {
   render() {
-    const { contact } = this.props;
+    const { contact, deleteContact } = this.props;
 
     return (
       <li className={`${css['contact']} list-group-item`}>
-        {contact.name}: {contact.number}
+        <span>
+          {contact.name}: {contact.number}
+        </span>
+        <button
+          className="btn btn-dark"
+          type="submit"
+          onClick={() => deleteContact(contact.id)}
+        >
+          Delete
+        </button>
       </li>
     );
   }
