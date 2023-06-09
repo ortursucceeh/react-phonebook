@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Filter extends Component {
   render() {
@@ -8,7 +9,7 @@ class Filter extends Component {
           Find contacts by name
         </label>
         <input
-          onChange={this.props.onChange}
+          onChange={this.props.handleFilterChange}
           type="text"
           name="filter"
           className="form-control"
@@ -17,5 +18,9 @@ class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  handleFilterChange: PropTypes.func.isRequired,
+};
 
 export default Filter;

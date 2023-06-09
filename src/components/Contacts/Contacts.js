@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import Contact from 'components/Contact/Contact';
 import css from './Contacts.module.css';
+import PropTypes from 'prop-types';
 
 class Contacts extends Component {
   render() {
@@ -15,7 +16,9 @@ class Contacts extends Component {
             ? contacts.map(contact => (
                 <Contact
                   key={contact.id}
-                  contact={contact}
+                  id={contact.id}
+                  name={contact.name}
+                  number={contact.number}
                   deleteContact={deleteContact}
                 />
               ))
@@ -26,7 +29,9 @@ class Contacts extends Component {
                 .map(contact => (
                   <Contact
                     key={contact.id}
-                    contact={contact}
+                    id={contact.id}
+                    name={contact.name}
+                    number={contact.number}
                     deleteContact={deleteContact}
                   />
                 ))}
@@ -36,4 +41,15 @@ class Contacts extends Component {
   }
 }
 
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  filter: PropTypes.string,
+  deleteContact: PropTypes.func.isRequired,
+};
 export default Contacts;

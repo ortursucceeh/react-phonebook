@@ -46,7 +46,7 @@ export class App extends Component {
       <h1 className={css['app__header']}>Phonebook📘</h1>
       <ContactForm createContact={this.createContact} />
       <h2>Contacts👁‍🗨</h2>
-      <Filter onChange={this.handleFilterChange } />
+      {this.state.contacts.length > 0 && <Filter handleFilterChange={this.handleFilterChange} />}
       <hr/>
       <Contacts contacts={this.state.contacts} filter={this.state.filter} deleteContact={ this.deleteContact }/>
     </div>)
