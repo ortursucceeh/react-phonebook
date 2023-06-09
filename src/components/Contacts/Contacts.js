@@ -52,4 +52,5 @@ Contacts.propTypes = {
   filter: PropTypes.string,
   deleteContact: PropTypes.func.isRequired,
 };
+
 export default Contacts;
