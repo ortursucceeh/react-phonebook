@@ -16,13 +16,13 @@ export class App extends Component {
       ...data,
       id: nanoid(),
     }
-
+    
     if (this.state.contacts.some(contact => contact.name === newUser.name)) {
       alert(`${newUser.name} already in contacts.`)
       return
     }
 
-    this.setState(prevState => ({ ...prevState, contacts: prevState.contacts.concat([newUser]) }))
+    this.setState(prevState => ({ contacts: [...prevState.contacts, newUser] }))
   }
 
   deleteContact = (id) => {
@@ -35,10 +35,9 @@ export class App extends Component {
   handleFilterChange = evt => {
     const { value } = evt.target;
     console.log('value :>> ', value);
-    this.setState(prevState => ({
-      ...prevState,
+    this.setState({
       filter: value,
-    }))
+    })
   }
   
   render() {

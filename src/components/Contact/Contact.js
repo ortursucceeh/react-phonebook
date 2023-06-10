@@ -8,9 +8,8 @@ class Contact extends Component {
 
     return (
       <li className={`${css['contact']} list-group-item`}>
-        <span>
-          {name}: {number}
-        </span>
+        <span className={css['contact__info']}>{name}</span>:
+        <span className={css['contact__info']}>{number}</span>
         <button
           className="btn btn-dark"
           type="submit"
@@ -24,9 +23,9 @@ class Contact extends Component {
 }
 
 Contact.propTypes = {
-  id: propTypes.number.isRequired,
+  id: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
-  number: propTypes.number.isRequired,
+  number: propTypes.string.isRequired,
   deleteContact: propTypes.func.isRequired,
 };
 
