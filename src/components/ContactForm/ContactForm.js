@@ -3,6 +3,11 @@ import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
+  state = {
+    nameValue: '',
+    numberValue: '',
+  };
+
   handleSubmit = evt => {
     const { createContact } = this.props;
     evt.preventDefault();
@@ -14,7 +19,15 @@ class ContactForm extends Component {
       number,
     };
     createContact(userData);
-    form.reset();
+    this.setState({ nameValue: '', numberValue: '' });
+  };
+
+  handleNameInputChange = ({ target: { value } }) => {
+    this.setState({ nameValue: value });
+  };
+
+  handleNumberInputChange = ({ target: { value } }) => {
+    this.setState({ numberValue: value });
   };
 
   render() {
@@ -32,6 +45,8 @@ class ContactForm extends Component {
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
               placeholder="Cristiano Ronaldo"
+              onChange={this.handleNameInputChange}
+              value={this.state.nameValue}
               required
             />
           </div>
@@ -46,6 +61,8 @@ class ContactForm extends Component {
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               placeholder="227-91-26"
+              onChange={this.handleNumberInputChange}
+              value={this.state.numberValue}
               required
             />
           </div>

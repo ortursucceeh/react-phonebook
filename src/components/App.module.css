@@ -1,6 +1,6 @@
 .app__wrapper {
   display: block;
-  width: 500px;
+  max-width: 500px;
   margin: 100px auto;
   font-size: 50px;
   border: 2px solid black;

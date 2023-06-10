@@ -1,45 +1,24 @@
-import { Component } from 'react';
 import Contact from 'components/Contact/Contact';
 import css from './Contacts.module.css';
 import PropTypes from 'prop-types';
 
-class Contacts extends Component {
-  render() {
-    const { contacts, filter, deleteContact } = this.props;
-
-    return (
-      <div className={css['contacts']}>
-        <ul
-          className={`${css['contacts__list']} list-group list-group-numbered`}
-        >
-          {!filter
-            ? contacts.map(contact => (
-                <Contact
-                  key={contact.id}
-                  id={contact.id}
-                  name={contact.name}
-                  number={contact.number}
-                  deleteContact={deleteContact}
-                />
-              ))
-            : contacts
-                .filter(contact =>
-                  contact.name.toLowerCase().includes(filter.toLowerCase())
-                )
-                .map(contact => (
-                  <Contact
-                    key={contact.id}
-                    id={contact.id}
-                    name={contact.name}
-                    number={contact.number}
-                    deleteContact={deleteContact}
-                  />
-                ))}
-        </ul>
-      </div>
-    );
-  }
-}
+const Contacts = ({ contacts, deleteContact }) => {
+  return (
+    <div className={css['contacts']}>
+      <ul className={`${css['contacts__list']} list-group list-group-numbered`}>
+        {contacts.map(contact => (
+          <Contact
+            key={contact.id}
+            id={contact.id}
+            name={contact.name}
+            number={contact.number}
+            deleteContact={deleteContact}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 Contacts.propTypes = {
   contacts: PropTypes.arrayOf(
@@ -49,7 +28,6 @@ Contacts.propTypes = {
       number: PropTypes.string.isRequired,
     })
   ),
-  filter: PropTypes.string,
   deleteContact: PropTypes.func.isRequired,
 };
 

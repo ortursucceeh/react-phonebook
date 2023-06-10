@@ -32,22 +32,27 @@ export class App extends Component {
     }))
   }
 
-  handleFilterChange = evt => {
-    const { value } = evt.target;
-    console.log('value :>> ', value);
+  handleFilterChange = ({target: {value}}) => {
     this.setState({
       filter: value,
     })
   }
   
   render() {
+    const { contacts, filter } = this.state;
+
     return (<div className={css['app__wrapper']}>
       <h1 className={css['app__header']}>Phonebook📘</h1>
       <ContactForm createContact={this.createContact} />
       <h2>Contacts👁‍🗨</h2>
-      {this.state.contacts.length > 0 && <Filter handleFilterChange={this.handleFilterChange} />}
-      <hr/>
-      <Contacts contacts={this.state.contacts} filter={this.state.filter} deleteContact={ this.deleteContact }/>
+      {contacts.length > 0 && <Filter handleFilterChange={this.handleFilterChange} />}
+      <hr />
+      <Contacts contacts={
+        filter
+          ? contacts.filter(contact =>
+            contact.name.toLowerCase().includes(filter.toLowerCase()))
+          : contacts}
+        deleteContact={this.deleteContact} />
     </div>)
   }
 }
