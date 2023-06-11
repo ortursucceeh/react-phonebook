@@ -8,17 +8,15 @@ class ContactForm extends Component {
     numberValue: '',
   };
 
-  handleSubmit = evt => {
-    const { createContact } = this.props;
-    evt.preventDefault();
-    const form = evt.currentTarget;
+  handleSubmit = e => {
+    e.preventDefault();
+    const form = e.currentTarget;
     const name = form.name.value;
     const number = form.number.value;
-    const userData = {
+    this.props.createContact({
       name,
       number,
-    };
-    createContact(userData);
+    });
     this.setState({ nameValue: '', numberValue: '' });
   };
 

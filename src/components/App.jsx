@@ -11,6 +11,14 @@ export class App extends Component {
     filter: ''
   }
 
+  componentDidMount() {
+    this.setState({ contacts:  JSON.parse(localStorage.getItem('contacts'))})
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+  }
+
   createContact = (data) => {
     const newUser = {
       ...data,
@@ -23,11 +31,11 @@ export class App extends Component {
     }
 
     this.setState(prevState => ({ contacts: [...prevState.contacts, newUser] }))
+    
   }
 
   deleteContact = (id) => {
     this.setState(prevState => ({
-      ...prevState,
       contacts: prevState.contacts.filter(contact => contact.id !== id)
     }))
   }
