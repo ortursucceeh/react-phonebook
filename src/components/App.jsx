@@ -47,7 +47,10 @@ export class App extends Component {
   }
   
   render() {
-    const { contacts, filter } = this.state;
+    let { contacts, filter } = this.state;
+    
+    if (filter) contacts = contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase()))
 
     return (<div className={css['app__wrapper']}>
       <h1 className={css['app__header']}>Phonebook📘</h1>
@@ -55,12 +58,7 @@ export class App extends Component {
       <h2>Contacts👁‍🗨</h2>
       {contacts.length > 0 && <Filter handleFilterChange={this.handleFilterChange} />}
       <hr />
-      <Contacts contacts={
-        filter
-          ? contacts.filter(contact =>
-            contact.name.toLowerCase().includes(filter.toLowerCase()))
-          : contacts}
-        deleteContact={this.deleteContact} />
+      <Contacts contacts={contacts} deleteContact={this.deleteContact} />
     </div>)
   }
 }
