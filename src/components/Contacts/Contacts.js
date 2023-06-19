@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 const Contacts = ({ contacts, deleteContact }) => {
   return (
-    <div className={css['contacts']}>
-      <ul className={`${css['contacts__list']} list-group list-group-numbered`}>
+    <div className={css.wrapper}>
+      <ul className={`${css.contacts} list-group list-group-numbered`}>
         {contacts.map(contact => (
           <Contact
             key={contact.id}

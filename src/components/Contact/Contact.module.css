@@ -6,6 +6,6 @@
   max-width: auto;
 }
 
-.contact__info {
+.contact > span {
   text-align: left;
 }

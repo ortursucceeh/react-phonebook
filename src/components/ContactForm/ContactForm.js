@@ -1,77 +1,72 @@
-import { Component } from 'react';
+import { Component, useState, useEffect } from 'react';
 import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 
-class ContactForm extends Component {
-  state = {
-    nameValue: '',
-    numberValue: '',
-  };
+const ContactForm = props => {
+  const [nameValue, setNameValue] = useState('');
+  const [numberValue, setNumberValue] = useState('');
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.name.value;
     const number = form.number.value;
-    this.props.createContact({
+    props.createContact({
       name,
       number,
     });
-    this.setState({ nameValue: '', numberValue: '' });
+    setNameValue('');
+    setNumberValue('');
   };
 
-  handleNameInputChange = ({ target: { value } }) => {
-    this.setState({ nameValue: value });
+  const handleNameInputChange = ({ target: { value } }) => {
+    setNameValue(value);
   };
 
-  handleNumberInputChange = ({ target: { value } }) => {
-    this.setState({ numberValue: value });
+  const handleNumberInputChange = ({ target: { value } }) => {
+    setNumberValue(value);
   };
 
-  render() {
-    return (
-      <div className={css['contact-form']}>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label htmlFor="name" className="form-label">
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              className="form-control"
-              // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-              placeholder="Cristiano Ronaldo"
-              onChange={this.handleNameInputChange}
-              value={this.state.nameValue}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="number" className="form-label">
-              Number
-            </label>
-            <input
-              type="tel"
-              name="number"
-              className="form-control"
-              // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              placeholder="227-91-26"
-              onChange={this.handleNumberInputChange}
-              value={this.state.numberValue}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Add Contact
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={css.form}>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name" className="form-label">
+            Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            className="form-control"
+            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            placeholder="Cristiano Ronaldo"
+            onChange={handleNameInputChange}
+            value={nameValue}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="number" className="form-label">
+            Number
+          </label>
+          <input
+            type="tel"
+            name="number"
+            className="form-control"
+            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            placeholder="227-91-26"
+            onChange={handleNumberInputChange}
+            value={numberValue}
+            required
+          />
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Add Contact
+        </button>
+      </form>
+    </div>
+  );
+};
 
 ContactForm.propTypes = {
   createContact: PropTypes.func.isRequired,

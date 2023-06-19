@@ -3,9 +3,8 @@ import propTypes from 'prop-types';
 
 const Contact = ({ id, name, number, deleteContact }) => {
   return (
-    <li className={`${css['contact']} list-group-item`}>
-      <span className={css['contact__info']}>{name}</span>:
-      <span className={css['contact__info']}>{number}</span>
+    <li className={`${css.contact} list-group-item`}>
+      <span>{name}</span>:<span>{number}</span>
       <button
         className="btn btn-dark"
         type="submit"
