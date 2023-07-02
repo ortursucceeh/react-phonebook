@@ -1,8 +1,13 @@
 label {
   font-size: 18px;
   text-align: left;
+  margin-top: 15px;
 }
 
 .form {
   margin-bottom: 25px;
+}
+
+.button {
+  margin-top: 15px;
 }

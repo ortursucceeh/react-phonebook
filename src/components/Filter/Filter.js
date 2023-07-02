@@ -1,6 +1,14 @@
-import PropTypes from 'prop-types';
+import { getFilter, setFilter } from 'components/AppSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Filter = ({ handleFilterChange }) => {
+function Filter() {
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+
+  function handleFilterChange(e) {
+    dispatch(setFilter(e.target.value))
+  }
+
   return (
     <div>
       <label htmlFor="filter" className="form-label">
@@ -10,14 +18,11 @@ const Filter = ({ handleFilterChange }) => {
         onChange={handleFilterChange}
         type="text"
         name="filter"
+        value={filter}
         className="form-control"
       />
     </div>
   );
-};
-
-Filter.propTypes = {
-  handleFilterChange: PropTypes.func.isRequired,
 };
 
 export default Filter;

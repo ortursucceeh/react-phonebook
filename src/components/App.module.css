@@ -1,8 +1,7 @@
 .app {
   display: block;
-  max-width: 500px;
+  max-width: 800px;
   margin: 100px auto;
-  font-size: 50px;
   border: 2px solid black;
   box-shadow: inset #009688 0 0 0 5px, inset #059c8e 0 0 0 1px,
     inset #0cab9c 0 0 0 10px, inset #1fbdae 0 0 0 11px, inset #8ce9ff 0 0 0 16px,

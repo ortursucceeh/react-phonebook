@@ -4,8 +4,11 @@
   justify-content: space-between;
   align-items: center;
   max-width: auto;
+  position: relative;
 }
 
-.contact > span {
-  text-align: left;
+.contactInfo {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
 }

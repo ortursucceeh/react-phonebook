@@ -1,31 +1,39 @@
 import { useState } from 'react';
-import css from './ContactForm.module.css';
-import PropTypes from 'prop-types';
+import { nanoid } from '@reduxjs/toolkit';
+import { useDispatch, useSelector } from 'react-redux';
 
-const ContactForm = props => {
+import css from './ContactForm.module.css';
+import { addContact, getContacts } from 'components/AppSlice';
+
+function ContactForm() {
   const [nameValue, setNameValue] = useState('');
   const [numberValue, setNumberValue] = useState('');
+
+  const dispatch = useDispatch();
+  const contacts = useSelector(getContacts)
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.name.value;
     const number = form.number.value;
-    props.createContact({
+
+    if (contacts.some(contact => contact.name === name)) {
+      alert(`${name} already in contacts.`)
+      return
+    }
+
+    const newContact = {
       name,
       number,
-    });
+      id: nanoid()
+    }
+
+    dispatch(addContact(newContact))
+
     setNameValue('');
     setNumberValue('');
-  };
-
-  const handleNameInputChange = ({ target: { value } }) => {
-    setNameValue(value);
-  };
-
-  const handleNumberInputChange = ({ target: { value } }) => {
-    setNumberValue(value);
-  };
+  }
 
   return (
     <div className={css.form}>
@@ -40,7 +48,8 @@ const ContactForm = props => {
             className="form-control"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             placeholder="Cristiano Ronaldo"
-            onChange={handleNameInputChange}
+            onChange={e => setNameValue(e.target.value)}
+            maxLength="25"
             value={nameValue}
             required
           />
@@ -54,22 +63,18 @@ const ContactForm = props => {
             name="number"
             className="form-control"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            placeholder="227-91-26"
-            onChange={handleNumberInputChange}
+            placeholder="555-91-26"
+            onChange={e => setNumberValue(e.target.value)}
             value={numberValue}
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary mt-3">
           Add Contact
         </button>
       </form>
     </div>
   );
-};
-
-ContactForm.propTypes = {
-  createContact: PropTypes.func.isRequired,
 };
 
 export default ContactForm;

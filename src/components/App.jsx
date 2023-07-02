@@ -1,61 +1,38 @@
-import { useState, useEffect, useRef } from "react";
-import { nanoid } from "nanoid";
-import Contacts from "./Contacts/Contacts";
+import { useEffect, useRef } from "react";
+import ContactList from "./Contact/ContactList/ContactList";
 import Filter from "./Filter/Filter";
 import ContactForm from "./ContactForm/ContactForm";
 import css from './App.module.css';
+import { useDispatch, useSelector } from "react-redux";
+import { getContacts } from "./AppSlice";
 
-export const App = () => {
-  const [contacts, setContacts] = useState([]);
-  const [filter, setFilter] = useState('');
-  const prevContacts = useRef(contacts);
+export function App() {
+  const contacts = useSelector(getContacts)
 
-  useEffect(function () {
-    const contacts = JSON.parse(localStorage.getItem('contacts'));
-    if (contacts) setContacts(contacts)
-  }, [])
+  const dispatch = useDispatch();
+  // const prevContacts = useRef(contacts)
 
-  useEffect(() => {
-    if (prevContacts.current !== contacts) {
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-    }
-    prevContacts.current = contacts;
-  }, [contacts]);
+  // useEffect(function () {
+  //   const contacts = JSON.parse(localStorage.getItem('contacts'));
+  //   if (contacts) dispatch(setContacts(contacts))
+  // }, [])
 
-  const createContact = (data) => {
-    const newUser = {
-      ...data,
-      id: nanoid(),
-    }
-    
-    if (contacts.some(contact => contact.name === newUser.name)) {
-      alert(`${newUser.name} already in contacts.`)
-      return
-    }
-    
-    setContacts(prevContacts => ([...prevContacts, newUser] ))
-  }
+  // useEffect(() => {
+  //   if (prevContacts.current !== contacts) {
+  //     localStorage.setItem('contacts', JSON.stringify(contacts));
+  //   }
+  //   prevContacts.current = contacts;
+  // }, [contacts]);
 
-  const deleteContact = (id) => {
-    setContacts(prevContacts => (prevContacts.filter(contact => contact.id !== id)))
-  }
 
-  const handleFilterChange = ({target: {value}}) => {
-    setFilter(value)
-  }
-  
-  const getFilteredContacts = () => {
-    if (filter) return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()))
-    return contacts
-  }
-
-  return (<div className={css.app}>
-    <h1>Phonebook📘</h1>
-    <ContactForm createContact={createContact} />
-    <h2>Contacts👁‍🗨</h2>
-    {contacts.length > 0 && <Filter handleFilterChange={handleFilterChange} />}
-    <hr />
-    <Contacts contacts={getFilteredContacts()} deleteContact={deleteContact} />
-  </div>)
+  return (
+    <div className={css.app}>
+      <h1>Phonebook📘</h1>
+      <ContactForm />
+      <h2>Contacts👁‍🗨</h2>
+      {contacts.length > 0 && <Filter />}
+      <hr />
+      {contacts.length > 0 ? <ContactList />  : 'No contacts found🙃'}
+    </div>
+  )
 }
