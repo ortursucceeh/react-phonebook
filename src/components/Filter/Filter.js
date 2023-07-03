@@ -1,4 +1,4 @@
-import { getFilter, setFilter } from 'components/AppSlice';
+import { getFilter, setFilter } from 'redux/AppSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Filter() {

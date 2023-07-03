@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { memoize } from 'proxy-memoize'
 
 const initialState = {
   contacts: [],
@@ -33,12 +34,13 @@ export const {
 
 export default contactsSlice.reducer;
 
-export const getFilter = state => state.contacts.filter;
-export const getContacts = state => state.contacts.contacts;
+export const getFilter = state => state.filter;
 
-export const getFilteredContacts = (state) => {
-  const { filter, contacts } = state.contacts;
+export const getContacts = state => state.contacts;
+
+export const getFilteredContacts = memoize((state) => {
+  const { filter, contacts } = state;
   if (filter) return contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase()))
   return contacts
-}
+})

@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import ContactItem from '../ContactItem/ContactItem';
 import css from './ContactList.module.css';
-import { getContacts, getFilter, getFilteredContacts } from 'components/AppSlice';
+import { getContacts, getFilter, getFilteredContacts } from 'redux/AppSlice';
 
 
 function Contacts() {

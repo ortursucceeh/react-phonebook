@@ -3,7 +3,7 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
 import css from './ContactForm.module.css';
-import { addContact, getContacts } from 'components/AppSlice';
+import { addContact, getContacts } from 'redux/AppSlice';
 
 function ContactForm() {
   const [nameValue, setNameValue] = useState('');
@@ -40,7 +40,7 @@ function ContactForm() {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name" className="form-label">
-            Name
+            Contact name
           </label>
           <input
             type="text"
@@ -56,14 +56,14 @@ function ContactForm() {
         </div>
         <div>
           <label htmlFor="number" className="form-label">
-            Number
+            Phone number
           </label>
           <input
             type="tel"
             name="number"
             className="form-control"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            placeholder="555-91-26"
+            placeholder="012-345-67-89"
             onChange={e => setNumberValue(e.target.value)}
             value={numberValue}
             required

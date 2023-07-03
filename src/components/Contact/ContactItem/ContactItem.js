@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import css from './ContactItem.module.css';
 import propTypes from 'prop-types';
-import { deleteContact } from 'components/AppSlice';
+import { deleteContact } from 'redux/AppSlice';
 
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
@@ -13,8 +13,8 @@ const Contact = ({ id, name, number }) => {
   return (
     <li className={`${css.contact} list-group-item`}>
       <div className={css.contactInfo}>
-        <span className={css.name}>{name}: </span>
-        <span className={css.number}>{number}</span>  
+        <span className={css.name}>{name}</span>
+        <span className={css.number}>+{number}</span>  
       </div>
       
       <button
