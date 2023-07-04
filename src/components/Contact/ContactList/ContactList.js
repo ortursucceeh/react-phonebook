@@ -2,17 +2,24 @@ import { useSelector } from 'react-redux';
 
 import ContactItem from '../ContactItem/ContactItem';
 import css from './ContactList.module.css';
-import { getContacts, getFilter, getFilteredContacts } from 'redux/AppSlice';
+import { getContacts } from 'redux/ContactsSlice';
 
+import { getFilter } from 'redux/FilterSlice';
 
 function Contacts() {
-  const filter = useSelector(getFilter)
-  const contacts = useSelector(filter ? getFilteredContacts : getContacts)
+  const filter = useSelector(getFilter);
+  const contacts = useSelector(getContacts);
+
+  const filteredContacts = filter
+    ? contacts.filter(contact =>
+        contact.name.toLowerCase().includes(filter.toLowerCase())
+      )
+    : contacts;
 
   return (
     <div className={css.wrapper}>
       <ul className={`${css.contacts} list-group list-group-numbered`}>
-        {contacts.map(contact => (
+        {filteredContacts.map(contact => (
           <ContactItem
             key={contact.id}
             id={contact.id}
@@ -23,6 +30,6 @@ function Contacts() {
       </ul>
     </div>
   );
-};
+}
 
 export default Contacts;

@@ -1,4 +1,4 @@
-import { getFilter, setFilter } from 'redux/AppSlice';
+import { getFilter, setFilter } from 'redux/FilterSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Filter() {
@@ -6,7 +6,7 @@ function Filter() {
   const filter = useSelector(getFilter);
 
   function handleFilterChange(e) {
-    dispatch(setFilter(e.target.value))
+    dispatch(setFilter(e.target.value));
   }
 
   return (
@@ -23,6 +23,6 @@ function Filter() {
       />
     </div>
   );
-};
+}
 
 export default Filter;
