@@ -1,13 +1,23 @@
-import { useSelector } from 'react-redux';
-import { getContacts } from '../redux/ContactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ContactList from './Contact/ContactList/ContactList';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import css from './App.module.css';
+import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
+import { useEffect } from 'react';
+import { getContactsThunk } from 'redux/thunks';
+import Spinner from './Spinner/Spinner';
 
 export function App() {
-  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(getContactsThunk());
+  }, [dispatch]);
 
   return (
     <div className={css.app}>
@@ -16,6 +26,8 @@ export function App() {
       <h2>Contacts👁‍🗨</h2>
       {contacts.length > 0 && <Filter />}
       <hr />
+      {isLoading && !error && <Spinner />}
+      {!isLoading && error && <b>{error}</b>}
       {contacts.length > 0 ? (
         <ContactList />
       ) : (

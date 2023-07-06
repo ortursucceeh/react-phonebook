@@ -3,20 +3,21 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
 import css from './ContactForm.module.css';
-import { addContact, getContacts } from 'redux/ContactsSlice';
+import { createContactsThunk } from './../../redux/thunks';
+import { selectContacts } from 'redux/selectors';
 
 function ContactForm() {
   const [nameValue, setNameValue] = useState('');
   const [numberValue, setNumberValue] = useState('');
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.name.value;
-    const number = form.number.value;
+    const phone = form.number.value;
 
     if (contacts.some(contact => contact.name === name)) {
       alert(`${name} already in contacts.`);
@@ -24,12 +25,13 @@ function ContactForm() {
     }
 
     const newContact = {
-      name,
-      number,
       id: nanoid(),
+      createdAt: Date.now(),
+      name,
+      phone,
     };
 
-    dispatch(addContact(newContact));
+    dispatch(createContactsThunk(newContact));
 
     setNameValue('');
     setNumberValue('');

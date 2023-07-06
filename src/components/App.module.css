@@ -7,6 +7,7 @@
     inset #0cab9c 0 0 0 10px, inset #1fbdae 0 0 0 11px, inset #8ce9ff 0 0 0 16px,
     inset #48e4d6 0 0 0 17px, inset #e5f9f7 0 0 0 21px, inset #bfecf7 0 0 0 22px;
   padding: 50px;
+  height: 1000px;
 }
 
 .app > h1 {

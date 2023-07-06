@@ -1,4 +1,11 @@
-.wrapper,
+.wrapper {
+  margin-top: 25px;
+}
 .contacts {
   margin-top: 25px;
+  height: 430px;
+}
+
+.contacts {
+  overflow-y: scroll;
 }

@@ -1,20 +1,20 @@
 import { useDispatch } from 'react-redux';
 import css from './ContactItem.module.css';
 import propTypes from 'prop-types';
-import { deleteContact } from 'redux/ContactsSlice';
+import { deleteContactsThunk } from 'redux/thunks';
 
-const Contact = ({ id, name, number }) => {
+const Contact = ({ id, name, phone }) => {
   const dispatch = useDispatch();
 
   function removeContact(id) {
-    dispatch(deleteContact(id));
+    dispatch(deleteContactsThunk(id));
   }
 
   return (
     <li className={`${css.contact} list-group-item`}>
       <div className={css.contactInfo}>
         <span className={css.name}>{name}</span>
-        <span className={css.number}>+{number}</span>
+        <span className={css.number}>+{phone}</span>
       </div>
 
       <button
@@ -31,7 +31,7 @@ const Contact = ({ id, name, number }) => {
 Contact.propTypes = {
   id: propTypes.string.isRequired,
   name: propTypes.string.isRequired,
-  number: propTypes.string.isRequired,
+  phone: propTypes.string.isRequired,
 };
 
 export default Contact;
