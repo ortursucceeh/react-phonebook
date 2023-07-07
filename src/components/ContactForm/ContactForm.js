@@ -20,8 +20,7 @@ function ContactForm() {
     const phone = form.number.value;
 
     if (contacts.some(contact => contact.name === name)) {
-      alert(`${name} already in contacts.`);
-      return;
+      return alert(`${name} already in contacts.`);
     }
 
     const newContact = {

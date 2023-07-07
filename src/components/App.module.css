@@ -13,3 +13,13 @@
 .app > h1 {
   text-align: center;
 }
+
+.filters {
+  display: flex;
+  align-items: center;
+}
+
+.sort {
+  align-self: flex-end;
+  margin-left: auto;
+}
