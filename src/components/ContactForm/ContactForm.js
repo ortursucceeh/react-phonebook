@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './ContactForm.module.css';
 import { createContactsThunk } from './../../redux/thunks';
 import { selectContacts } from 'redux/selectors';
+import toast, { Toaster } from 'react-hot-toast';
 
 function ContactForm() {
   const [nameValue, setNameValue] = useState('');
@@ -31,7 +32,7 @@ function ContactForm() {
     };
 
     dispatch(createContactsThunk(newContact));
-
+    toast.success('Contact was successfully created!');
     setNameValue('');
     setNumberValue('');
   };

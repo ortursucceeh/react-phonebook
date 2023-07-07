@@ -19,6 +19,10 @@ export const createContact = async data => {
 };
 
 export const deleteContact = async id => {
-  const res = await fetch(`${BASE_URL}/contacts/${id}`);
+  const options = {
+    method: 'DELETE',
+  };
+  const res = await fetch(`${BASE_URL}/contacts/${id}`, options);
+
   return await res.json();
 };
