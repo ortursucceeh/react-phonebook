@@ -1,8 +1,9 @@
 import { useDispatch } from 'react-redux';
-import css from './ContactItem.module.css';
 import propTypes from 'prop-types';
-import { deleteContactsThunk } from 'redux/thunks';
 import toast from 'react-hot-toast';
+
+import css from './ContactItem.module.css';
+import { deleteContactsThunk } from 'redux/contacts/thunks';
 
 const Contact = ({ id, name, phone }) => {
   const dispatch = useDispatch();

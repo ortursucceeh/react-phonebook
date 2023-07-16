@@ -1,7 +1,7 @@
-.app {
+.contacts {
   display: block;
   max-width: 800px;
-  margin: 100px auto;
+  margin: 40px auto;
   border: 2px solid black;
   box-shadow: inset #009688 0 0 0 5px, inset #059c8e 0 0 0 1px,
     inset #0cab9c 0 0 0 10px, inset #1fbdae 0 0 0 11px, inset #8ce9ff 0 0 0 16px,
@@ -10,7 +10,7 @@
   height: 1000px;
 }
 
-.app > h1 {
+.contacts > h1 {
   text-align: center;
 }
 

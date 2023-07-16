@@ -3,9 +3,9 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
 import css from './ContactForm.module.css';
-import { createContactsThunk } from './../../redux/thunks';
-import { selectContacts } from 'redux/selectors';
-import toast, { Toaster } from 'react-hot-toast';
+import { createContactsThunk } from './../../redux/contacts/thunks';
+import { selectContacts } from 'redux/contacts/selectors';
+import toast from 'react-hot-toast';
 
 function ContactForm() {
   const [nameValue, setNameValue] = useState('');

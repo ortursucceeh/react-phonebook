@@ -1,46 +1,34 @@
-import { useDispatch, useSelector } from 'react-redux';
+// import { lazy, Suspense } from 'react';
+// const LoginPage = lazy(() => import('./pages/LoginPage'));
+// const ToDoDetails = lazy(() => import('./ToDo/ToDoDetails'));
+// const HomePage = lazy(() => import('./pages/HomePage'));
+// import PrivateRoute from './PrivateRoute/PrivateRoute';
+// import PublicRoute from './PublicRoute /PublicRoute ';
 
-import ContactList from './Contact/ContactList/ContactList';
-import ContactForm from './ContactForm/ContactForm';
-import Filter from './Filter/Filter';
-import css from './App.module.css';
-import { selectContacts, selectError, selectIsLoading } from 'redux/selectors';
-import { useEffect } from 'react';
-import { getContactsThunk } from 'redux/thunks';
-import Spinner from './Spinner/Spinner';
-import Sort from './Sort/Sort';
+import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 
-export function App() {
-  const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+import AppLayout from './AppLayout/AppLayout';
 
-  useEffect(() => {
-    dispatch(getContactsThunk());
-  }, [dispatch]);
+import RegistrationPage from 'pages/RegistrationPage';
+import ContactsPage from 'pages/ContactsPage';
+import PageNotFound from 'pages/PageNotFound';
+import LoginPage from 'pages/LoginPage';
 
+function App() {
   return (
-    <div className={css.app}>
-      <h1>Phonebook📘</h1>
-      <ContactForm />
-      <h2>Contacts👁‍🗨</h2>
-      {contacts.length > 0 && (
-        <div className={css.filters}>
-          <Filter />
-          <span className={css.sort}>
-            <Sort />
-          </span>
-        </div>
-      )}
-      <hr />
-      {isLoading && !error && <Spinner />}
-      {!isLoading && error && <b>{error}</b>}
-      {contacts.length > 0 ? (
-        <ContactList />
-      ) : (
-        "You don't have any contact yet🙃"
-      )}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route index element={<Navigate replace to="/home" />} />
+          <Route path="/home" element={<ContactsPage />} />
+        </Route>
+
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegistrationPage />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
+
+export default App;
