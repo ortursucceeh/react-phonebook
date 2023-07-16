@@ -2,7 +2,8 @@ import ContactList from './../Contact/ContactList/ContactList';
 import ContactForm from './../ContactForm/ContactForm';
 import Filter from './../Filter/Filter';
 import css from './Contacts.module.css';
-
+import { RiContactsBookLine } from 'react-icons/ri';
+import { IoMdContacts } from 'react-icons/io';
 import Spinner from './../Spinner/Spinner';
 import Sort from './../Sort/Sort';
 import { useContacts } from 'hooks/useContacts';
@@ -12,9 +13,14 @@ function Contacts() {
 
   return (
     <div className={css.contacts}>
-      <h1>Phonebook📘</h1>
+      <h1>
+        Phonebook <RiContactsBookLine />
+      </h1>
       <ContactForm />
-      <h2>Contacts👁‍🗨</h2>
+      <h2>
+        Contacts
+        <IoMdContacts />
+      </h2>
       {contacts.length > 0 && (
         <div className={css.filters}>
           <Filter />

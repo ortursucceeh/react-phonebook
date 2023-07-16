@@ -1,5 +1,9 @@
 function PageNotFound() {
-  return <h1>Page not found🤔</h1>;
+  return (
+    <h1 className="mt-5 text-center">
+      The page you are looking for could not be found 😢
+    </h1>
+  );
 }
 
 export default PageNotFound;

@@ -13,21 +13,28 @@ import RegistrationPage from 'pages/RegistrationPage';
 import ContactsPage from 'pages/ContactsPage';
 import PageNotFound from 'pages/PageNotFound';
 import LoginPage from 'pages/LoginPage';
+import { Provider } from 'react-redux';
+import store from 'redux/store';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<AppLayout />}>
-          <Route index element={<Navigate replace to="/home" />} />
-          <Route path="/home" element={<ContactsPage />} />
-        </Route>
+    <Provider store={store}>
+      <Toaster />
 
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />}>
+            <Route index element={<Navigate replace to="/home" />} />
+            <Route path="/home" element={<ContactsPage />} />
+          </Route>
+
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
