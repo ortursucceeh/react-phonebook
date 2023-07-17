@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+
 import { setSortStatus } from 'redux/contacts/SortSlice';
 import { sortStatuses } from '../../redux/constants';
 

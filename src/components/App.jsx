@@ -1,27 +1,22 @@
-// import { lazy, Suspense } from 'react';
-// const LoginPage = lazy(() => import('./pages/LoginPage'));
-// const ToDoDetails = lazy(() => import('./ToDo/ToDoDetails'));
-// const HomePage = lazy(() => import('./pages/HomePage'));
-
 import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { Toaster } from 'react-hot-toast';
+import store from 'redux/store';
 
 import AppLayout from './AppLayout/AppLayout';
+import ProtectedRoute from './ProtectedRoutre/ProtectedRoutre';
 
 import RegistrationPage from 'pages/RegistrationPage';
 import ContactsPage from 'pages/ContactsPage';
 import PageNotFound from 'pages/PageNotFound';
 import LoginPage from 'pages/LoginPage';
-import { Provider } from 'react-redux';
-import store from 'redux/store';
-import { Toaster } from 'react-hot-toast';
-import ProtectedRoute from './ProtectedRoutre/ProtectedRoutre';
 
 function App() {
   return (
     <Provider store={store}>
       <Toaster />
 
-      <BrowserRouter>
+      <BrowserRouter basename="/goit-react-hw-02-phonebook">
         <Routes>
           <Route
             element={

@@ -1,9 +1,10 @@
-import { useAuth } from 'hooks/useAuth';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { loginThunk } from 'redux/auth/authThunks';
+import { useDispatch } from 'react-redux';
+
 import styles from './Login.module.css';
+import { useAuth } from 'hooks/useAuth';
+import { loginThunk } from 'redux/auth/authThunks';
 
 function Login() {
   const navigate = useNavigate();

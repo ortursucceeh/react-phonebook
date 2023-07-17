@@ -1,5 +1,6 @@
-import styles from './Header.module.css';
 import { NavLink } from 'react-router-dom';
+
+import styles from './Header.module.css';
 import { useAuth } from 'hooks/useAuth';
 import UserMenu from 'components/UserMenu/UserMenu';
 

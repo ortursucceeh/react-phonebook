@@ -1,9 +1,10 @@
-import { useAuth } from 'hooks/useAuth';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { logoutThunk } from 'redux/auth/authThunks';
 import { VscOctoface } from 'react-icons/vsc';
+
+import { useAuth } from 'hooks/useAuth';
+import { logoutThunk } from 'redux/auth/authThunks';
 import styles from './UserMenu.module.css';
 
 function UserMenu() {
