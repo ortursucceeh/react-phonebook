@@ -38,15 +38,3 @@ export async function logout(token) {
   const data = await fetch(`${API_URL}/users/logout`, options);
   return await data.json();
 }
-
-export async function getCurrentUser(token) {
-  const options = {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
-  const data = await fetch(`${API_URL}/users/current`, options);
-  return await data.json();
-}

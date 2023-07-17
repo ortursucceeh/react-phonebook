@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { nanoid } from '@reduxjs/toolkit';
+// import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
 import css from './ContactForm.module.css';
 import { createContactThunk } from '../../redux/contacts/contactsThunks';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
 import toast from 'react-hot-toast';
+import { useAuth } from 'hooks/useAuth';
 
 function ContactForm() {
   const [nameValue, setNameValue] = useState('');
@@ -13,28 +14,28 @@ function ContactForm() {
 
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  const { token } = useAuth();
 
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     const name = form.name.value;
-    const phone = form.number.value;
+    const number = form.number.value;
 
     if (contacts.some(contact => contact.name === name)) {
       return alert(`${name} already in contacts.`);
     }
 
     const newContact = {
-      id: nanoid(),
-      createdAt: Date.now(),
       name,
-      phone,
+      number,
     };
 
-    dispatch(createContactThunk(newContact));
-    toast.success('Contact was successfully created!');
-    setNameValue('');
-    setNumberValue('');
+    dispatch(createContactThunk({ data: newContact, token })).then(() => {
+      toast.success('Contact was successfully created!');
+      setNameValue('');
+      setNumberValue('');
+    });
   };
 
   return (

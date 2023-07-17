@@ -62,18 +62,3 @@ const userSlice = createSlice({
 export const { setUser, removeUser } = userSlice.actions;
 
 export default userSlice.reducer;
-
-// const userSlice = createSlice({
-//   name: 'auth',
-//   initialState: userInitialState,
-//   extraReducers: builder => {
-//     const { PENDING, FULFILLED, REJECTED } = STATUS;
-//     builder
-//       .addCase(loginThunk.fulfilled, handleFulfilledGet)
-//       .addCase(signupThunk.fulfilled, handleFulfilledSignup)
-//       .addCase(logoutThunk.fulfilled, handleFulfilledDel)
-//       .addMatcher(isAnyOf(...getTypes(PENDING)), handlePending)
-//       .addMatcher(isAnyOf(...getTypes(FULFILLED)), handleFulfilled)
-//       .addMatcher(isAnyOf(...getTypes(REJECTED)), handleRejected);
-//   },
-// });

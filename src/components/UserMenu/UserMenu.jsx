@@ -1,7 +1,7 @@
 import { useAuth } from 'hooks/useAuth';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { logoutThunk } from 'redux/auth/authThunks';
 import { VscOctoface } from 'react-icons/vsc';
 import styles from './UserMenu.module.css';
@@ -9,12 +9,14 @@ import styles from './UserMenu.module.css';
 function UserMenu() {
   const { token, email, name } = useAuth();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handleLogout(e) {
     e.preventDefault();
-    dispatch(logoutThunk(token));
-    toast.success('You was successfully logged out!');
-    Navigate('/home');
+    dispatch(logoutThunk(token)).then(() => {
+      toast.success('You was successfully logged out!');
+      navigate('/home');
+    });
   }
 
   return (

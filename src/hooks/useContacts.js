@@ -7,6 +7,7 @@ import {
   selectIsLoading,
 } from 'redux/contacts/contactsSelectors';
 import { getContactsThunk } from 'redux/contacts/contactsThunks';
+import { useAuth } from './useAuth';
 
 export function useContacts() {
   const dispatch = useDispatch();
@@ -14,10 +15,11 @@ export function useContacts() {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+  const { token } = useAuth();
 
   useEffect(() => {
-    dispatch(getContactsThunk());
-  }, [dispatch]);
+    dispatch(getContactsThunk(token));
+  }, [dispatch, token]);
 
   return { contacts, isLoading, error };
 }

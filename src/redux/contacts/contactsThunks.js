@@ -5,16 +5,16 @@ import {
   getContacts,
 } from '../../services/apiContacts';
 
-export const getContactsThunk = createAsyncThunk('contacts/fetchAll', () =>
-  getContacts()
+export const getContactsThunk = createAsyncThunk('contacts/fetchAll', token =>
+  getContacts(token)
 );
 
 export const createContactThunk = createAsyncThunk(
   'contacts/addContact',
-  data => createContact(data)
+  ({ data, token }) => createContact(data, token)
 );
 
 export const deleteContactThunk = createAsyncThunk(
   'contacts/deleteContact',
-  id => deleteContact(id)
+  ({ id, token }) => deleteContact(id, token)
 );

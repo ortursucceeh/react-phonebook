@@ -10,8 +10,3 @@ export const signupThunk = createAsyncThunk('auth/signup', body =>
 export const logoutThunk = createAsyncThunk('auth/logout', token =>
   logout(token)
 );
-
-// export const getCurrentUserThunk = createAsyncThunk(
-//   'auth/getCurrentUser',
-//   token => getCurrentUser(token)
-// );
