@@ -1,3 +1,4 @@
+import { useAuth } from 'hooks/useAuth';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,16 +8,21 @@ import styles from './Login.module.css';
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isLoading } = useAuth();
 
   function handleSubmit(e) {
     e.preventDefault();
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
 
-    dispatch(loginThunk({ email, password })).then(() => {
-      toast.success(`You are logged in!`);
-      navigate('/home');
-    });
+    dispatch(loginThunk({ email, password }))
+      .then(() => {
+        toast.success(`You are logged in!`);
+        navigate('/home');
+      })
+      .catch(() => {
+        toast.error('Wrong credentials');
+      });
   }
 
   return (
@@ -46,8 +52,8 @@ function Login() {
             autoComplete="on"
           />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Login up
+        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+          {isLoading ? 'Loading...' : 'Log in '}
         </button>
         <p className="mt-2">
           Don't have an account? <Link to="/register">Register</Link>

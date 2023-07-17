@@ -2,10 +2,9 @@
   width: 500px;
   margin: 0 auto;
   margin-top: 75px;
-  border: 12px solid;
-  padding: 30px;
+  border: 15px solid;
+  padding: 50px;
   border-image: linear-gradient(45deg, turquoise, rgb(146, 226, 26)) 1;
-  border-radius: 20px;
 }
 
 .login h1 {

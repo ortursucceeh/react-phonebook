@@ -17,10 +17,13 @@ function Sort() {
         aria-label="Default select example"
         onChange={handleSortChange}
       >
-        <option defaultValue value={sortStatuses.createdAt}>
-          Creation date (recent first)
+        <option defaultValue value="">
+          Sort by
         </option>
-        <option value={sortStatuses.name}>Name (A-Z)</option>
+        <option defaultValue value={sortStatuses.nameAsc}>
+          Name (A-Z)
+        </option>
+        <option value={sortStatuses.nameDesc}>Name (Z-A)</option>
       </select>
     </div>
   );

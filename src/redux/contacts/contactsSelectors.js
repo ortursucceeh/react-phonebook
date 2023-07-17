@@ -26,12 +26,10 @@ export const selectSortedContacts = memoize(state => {
   const contacts = selectFilteredContacts(state);
 
   switch (sortStatus) {
-    case sortStatuses.name:
+    case sortStatuses.nameAsc:
       return [...contacts].sort((a, b) => (a.name > b.name ? 1 : -1));
-    case sortStatuses.createdAt:
-      return [...contacts].sort((a, b) =>
-        new Date(b.createdAt) > new Date(a.createdAt) ? 1 : -1
-      );
+    case sortStatuses.nameDesc:
+      return [...contacts].sort((a, b) => (a.name > b.name ? -1 : 1));
     default:
       return contacts;
   }

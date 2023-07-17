@@ -23,8 +23,8 @@ function UserMenu() {
     <div className={styles.userMenu}>
       <p>{email}</p>
       <p>
-        {name}
         <VscOctoface />
+        {name}
       </p>
       <button className="btn btn-primary" onClick={handleLogout}>
         Logout

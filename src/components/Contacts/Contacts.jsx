@@ -1,12 +1,13 @@
+import { IoMdContacts } from 'react-icons/io';
+import { RiContactsBookLine } from 'react-icons/ri';
+
+import { useContacts } from 'hooks/useContacts';
+import css from './Contacts.module.css';
+import Filter from './../Filter/Filter';
 import ContactList from './../Contact/ContactList/ContactList';
 import ContactForm from './../ContactForm/ContactForm';
-import Filter from './../Filter/Filter';
-import css from './Contacts.module.css';
-import { RiContactsBookLine } from 'react-icons/ri';
-import { IoMdContacts } from 'react-icons/io';
 import Spinner from './../Spinner/Spinner';
 import Sort from './../Sort/Sort';
-import { useContacts } from 'hooks/useContacts';
 
 function Contacts() {
   const { contacts, isLoading, error } = useContacts();
@@ -35,7 +36,7 @@ function Contacts() {
       {contacts.length > 0 ? (
         <ContactList />
       ) : (
-        "You don't have any contact yet🙃"
+        "You don't have any contacts yet🙃"
       )}
     </div>
   );

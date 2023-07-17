@@ -1,4 +1,4 @@
 export const sortStatuses = Object.freeze({
-  name: 'name',
-  createdAt: 'createdAt',
+  nameAsc: 'nameAsc',
+  nameDesc: 'nameDesc',
 });

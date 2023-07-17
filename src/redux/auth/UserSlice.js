@@ -21,13 +21,7 @@ const handleFulfilled = state => {
   state.error = '';
 };
 
-const handleFulfilledLogin = (state, { payload }) => {
-  state.name = payload.user.name;
-  state.email = payload.user.email;
-  state.token = payload.token;
-};
-
-const handleFulfilledSignup = (state, { payload }) => {
+const handleFulfilledFormAction = (state, { payload }) => {
   state.name = payload.user.name;
   state.email = payload.user.email;
   state.token = payload.token;
@@ -50,8 +44,8 @@ const userSlice = createSlice({
   extraReducers: builder => {
     const { PENDING, FULFILLED, REJECTED } = STATUS;
     builder
-      .addCase(loginThunk.fulfilled, handleFulfilledLogin)
-      .addCase(signupThunk.fulfilled, handleFulfilledSignup)
+      .addCase(loginThunk.fulfilled, handleFulfilledFormAction)
+      .addCase(signupThunk.fulfilled, handleFulfilledFormAction)
       .addCase(logoutThunk.fulfilled, handleFulfilledLogout)
       .addMatcher(isAnyOf(...getTypes(PENDING)), handlePending)
       .addMatcher(isAnyOf(...getTypes(FULFILLED)), handleFulfilled)

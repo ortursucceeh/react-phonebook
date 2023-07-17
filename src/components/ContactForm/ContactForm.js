@@ -1,11 +1,10 @@
 import { useState } from 'react';
-// import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
 import css from './ContactForm.module.css';
 import { createContactThunk } from '../../redux/contacts/contactsThunks';
 import { selectContacts } from 'redux/contacts/contactsSelectors';
-import toast from 'react-hot-toast';
 import { useAuth } from 'hooks/useAuth';
 
 function ContactForm() {
@@ -23,7 +22,7 @@ function ContactForm() {
     const number = form.number.value;
 
     if (contacts.some(contact => contact.name === name)) {
-      return alert(`${name} already in contacts.`);
+      return toast.error(`${name} already in contacts.🙂`);
     }
 
     const newContact = {
