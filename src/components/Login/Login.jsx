@@ -13,9 +13,10 @@ function Login() {
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
 
-    dispatch(loginThunk({ email, password }));
-    toast.success('You are logged in!');
-    navigate('/home');
+    dispatch(loginThunk({ email, password })).then(() => {
+      toast.success(`You are logged in!`);
+      navigate('/home');
+    });
   }
 
   return (

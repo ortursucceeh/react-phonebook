@@ -2,8 +2,6 @@
 // const LoginPage = lazy(() => import('./pages/LoginPage'));
 // const ToDoDetails = lazy(() => import('./ToDo/ToDoDetails'));
 // const HomePage = lazy(() => import('./pages/HomePage'));
-// import PrivateRoute from './PrivateRoute/PrivateRoute';
-// import PublicRoute from './PublicRoute /PublicRoute ';
 
 import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 
@@ -16,6 +14,7 @@ import LoginPage from 'pages/LoginPage';
 import { Provider } from 'react-redux';
 import store from 'redux/store';
 import { Toaster } from 'react-hot-toast';
+import ProtectedRoute from './ProtectedRoutre/ProtectedRoutre';
 
 function App() {
   return (
@@ -24,7 +23,13 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route element={<AppLayout />}>
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate replace to="/home" />} />
             <Route path="/home" element={<ContactsPage />} />
           </Route>
