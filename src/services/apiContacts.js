@@ -1,11 +1,11 @@
 const BASE_URL = 'https://64a68483096b3f0fcc7ff23a.mockapi.io/api/';
 
-export const getContacts = async () => {
+export async function getContacts() {
   const data = await fetch(`${BASE_URL}/contacts`);
   return await data.json();
-};
+}
 
-export const createContact = async data => {
+export async function createContact(data) {
   const options = {
     method: 'POST',
     headers: {
@@ -16,13 +16,13 @@ export const createContact = async data => {
 
   const res = await fetch(`${BASE_URL}/contacts`, options);
   return await res.json();
-};
+}
 
-export const deleteContact = async id => {
+export async function deleteContact(id) {
   const options = {
     method: 'DELETE',
   };
   const res = await fetch(`${BASE_URL}/contacts/${id}`, options);
 
   return await res.json();
-};
+}

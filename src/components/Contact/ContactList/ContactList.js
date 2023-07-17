@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 
 import ContactItem from '../ContactItem/ContactItem';
 import css from './ContactList.module.css';
-import { selectSortedContacts } from 'redux/contacts/selectors';
+import { selectSortedContacts } from 'redux/contacts/contactsSelectors';
 
 function Contacts() {
   const contacts = useSelector(selectSortedContacts);

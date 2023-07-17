@@ -9,12 +9,12 @@ export const getContactsThunk = createAsyncThunk('contacts/fetchAll', () =>
   getContacts()
 );
 
-export const createContactsThunk = createAsyncThunk(
+export const createContactThunk = createAsyncThunk(
   'contacts/addContact',
   data => createContact(data)
 );
 
-export const deleteContactsThunk = createAsyncThunk(
+export const deleteContactThunk = createAsyncThunk(
   'contacts/deleteContact',
   id => deleteContact(id)
 );

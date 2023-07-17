@@ -1,10 +1,10 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { contactsInitialState } from './../initialState';
 import {
-  createContactsThunk,
-  deleteContactsThunk,
+  createContactThunk,
+  deleteContactThunk,
   getContactsThunk,
-} from './thunks';
+} from './contactsThunks';
 
 const STATUS = {
   PENDING: 'pending',
@@ -12,7 +12,7 @@ const STATUS = {
   REJECTED: 'rejected',
 };
 
-const thunks = [createContactsThunk, deleteContactsThunk, getContactsThunk];
+const thunks = [createContactThunk, deleteContactThunk, getContactsThunk];
 
 const getTypes = type => thunks.map(el => el[type]);
 
@@ -26,7 +26,6 @@ const handleFulfilled = state => {
 };
 
 const handleFulfilledGet = (state, { payload }) => {
-  // handleFulfilled(state)
   state.contacts = payload;
 };
 
@@ -50,14 +49,12 @@ const contactsSlice = createSlice({
     const { PENDING, FULFILLED, REJECTED } = STATUS;
     builder
       .addCase(getContactsThunk.fulfilled, handleFulfilledGet)
-      .addCase(createContactsThunk.fulfilled, handleFulfilledCreate)
-      .addCase(deleteContactsThunk.fulfilled, handleFulfilledDel)
+      .addCase(createContactThunk.fulfilled, handleFulfilledCreate)
+      .addCase(deleteContactThunk.fulfilled, handleFulfilledDel)
       .addMatcher(isAnyOf(...getTypes(PENDING)), handlePending)
       .addMatcher(isAnyOf(...getTypes(FULFILLED)), handleFulfilled)
       .addMatcher(isAnyOf(...getTypes(REJECTED)), handleRejected);
   },
 });
-
-export const { addContact, deleteContact } = contactsSlice.actions;
 
 export default contactsSlice.reducer;

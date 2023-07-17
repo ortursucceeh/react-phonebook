@@ -1,4 +1,4 @@
-import { sortStatuses } from './../constants';
+import { sortStatuses } from '../constants';
 import { memoize } from 'proxy-memoize';
 
 export const selectContacts = state => state.contacts.contacts;

@@ -3,16 +3,16 @@ import propTypes from 'prop-types';
 import toast from 'react-hot-toast';
 
 import css from './ContactItem.module.css';
-import { deleteContactsThunk } from 'redux/contacts/thunks';
+import { deleteContactThunk } from 'redux/contacts/contactsThunks';
 
 const Contact = ({ id, name, phone }) => {
   const dispatch = useDispatch();
 
   function removeContact(id) {
+    dispatch(deleteContactThunk(id));
     toast(`Contact ${name} was deleted!`, {
       icon: '💥',
     });
-    dispatch(deleteContactsThunk(id));
   }
 
   return (

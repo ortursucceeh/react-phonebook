@@ -16,3 +16,9 @@
   font-size: 24px;
   color: black;
 }
+
+.buttons {
+  display: flex;
+  width: 200px;
+  gap: 0 25px;
+}

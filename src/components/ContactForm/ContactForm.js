@@ -3,8 +3,8 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
 import css from './ContactForm.module.css';
-import { createContactsThunk } from './../../redux/contacts/thunks';
-import { selectContacts } from 'redux/contacts/selectors';
+import { createContactThunk } from '../../redux/contacts/contactsThunks';
+import { selectContacts } from 'redux/contacts/contactsSelectors';
 import toast from 'react-hot-toast';
 
 function ContactForm() {
@@ -31,7 +31,7 @@ function ContactForm() {
       phone,
     };
 
-    dispatch(createContactsThunk(newContact));
+    dispatch(createContactThunk(newContact));
     toast.success('Contact was successfully created!');
     setNameValue('');
     setNumberValue('');

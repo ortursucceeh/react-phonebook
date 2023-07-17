@@ -5,8 +5,8 @@ import {
   selectContacts,
   selectError,
   selectIsLoading,
-} from 'redux/contacts/selectors';
-import { getContactsThunk } from 'redux/contacts/thunks';
+} from 'redux/contacts/contactsSelectors';
+import { getContactsThunk } from 'redux/contacts/contactsThunks';
 
 export function useContacts() {
   const dispatch = useDispatch();

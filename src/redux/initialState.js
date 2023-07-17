@@ -7,3 +7,11 @@ export const contactsInitialState = {
 export const filterInitialState = {
   filter: '',
 };
+
+export const userInitialState = {
+  name: '',
+  email: '',
+  token: '',
+  isLoading: false,
+  error: '',
+};
