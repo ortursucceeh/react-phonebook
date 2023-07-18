@@ -9,7 +9,7 @@ function Header() {
 
   return (
     <nav className={styles.navbar}>
-      <li>
+      <li className={styles.mainPages}>
         <NavLink to="/home">Home</NavLink>
         <NavLink to="/contacts">Contacts</NavLink>
       </li>

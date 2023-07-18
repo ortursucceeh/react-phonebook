@@ -11,6 +11,7 @@ import ContactsPage from 'pages/ContactsPage';
 import PageNotFound from 'pages/PageNotFound';
 import LoginPage from 'pages/LoginPage';
 import { PersistGate } from 'redux-persist/integration/react';
+import HomePage from 'pages/HomePage';
 
 function App() {
   return (
@@ -26,8 +27,9 @@ function App() {
                 </ProtectedRoute>
               }
             >
-              <Route index element={<Navigate replace to="/contacts" />} />
+              <Route index element={<Navigate replace to="/home" />} />
               <Route path="/contacts" element={<ContactsPage />} />
+              <Route path="/home" element={<HomePage />} />
             </Route>
 
             <Route path="/login" element={<LoginPage />} />

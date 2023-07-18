@@ -17,8 +17,14 @@
   color: black;
 }
 
-.buttons {
+.buttons,
+.mainPages {
   display: flex;
   width: 200px;
   gap: 0 25px;
+}
+
+.mainPages a::hover {
+  text-decoration: underline;
+  color: aqua;
 }

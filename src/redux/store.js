@@ -1,8 +1,3 @@
-import { configureStore } from '@reduxjs/toolkit';
-import contactsReducer from './contacts/ContactsSlice';
-import filterReducer from './contacts/FilterSlice';
-import sortReducer from './contacts/SortSlice';
-import userReducer from './auth/UserSlice';
 import {
   persistStore,
   persistReducer,
@@ -13,14 +8,20 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 
-const userPersistConfig = {
-  key: 'user',
+import contactsReducer from './contacts/ContactsSlice';
+import filterReducer from './contacts/FilterSlice';
+import sortReducer from './contacts/SortSlice';
+import userReducer from './auth/AuthSlice';
+
+const authPersistConfig = {
+  key: 'auth',
   storage,
 };
 
-const persistedReducer = persistReducer(userPersistConfig, userReducer);
+const persistedReducer = persistReducer(authPersistConfig, userReducer);
 
 const middleware = getDefaultMiddleware =>
   getDefaultMiddleware({
@@ -34,7 +35,7 @@ const store = configureStore({
     contacts: contactsReducer,
     filter: filterReducer,
     sort: sortReducer,
-    user: persistedReducer,
+    auth: persistedReducer,
   },
   middleware,
 });

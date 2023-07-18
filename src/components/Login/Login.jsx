@@ -19,7 +19,7 @@ function Login() {
     dispatch(loginThunk({ email, password }))
       .then(() => {
         toast.success(`You are logged in!`);
-        navigate('/contacts');
+        navigate('/home');
       })
       .catch(() => {
         toast.error('Wrong credentials');

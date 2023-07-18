@@ -20,7 +20,7 @@ function Register() {
     dispatch(signupThunk({ name, email, password }))
       .then(() => {
         toast.success('Your account was successfully created!');
-        navigate('/contacts');
+        navigate('/home');
       })
       .catch(() => {
         toast.error('Wrong credentials');

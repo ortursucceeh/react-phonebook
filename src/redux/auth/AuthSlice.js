@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit'; //
-import { userInitialState } from './../initialState';
+import { userInitialState } from '../initialState';
 import { loginThunk, signupThunk, logoutThunk } from './authThunks';
 
 const STATUS = {
@@ -38,7 +38,7 @@ const handleRejected = (state, { payload }) => {
   state.error = payload;
 };
 
-const userSlice = createSlice({
+const authSlice = createSlice({
   name: 'auth',
   initialState: userInitialState,
   extraReducers: builder => {
@@ -53,6 +53,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser } = authSlice.actions;
 
-export default userSlice.reducer;
+export default authSlice.reducer;
