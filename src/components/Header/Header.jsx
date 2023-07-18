@@ -10,7 +10,7 @@ function Header() {
   return (
     <nav className={styles.navbar}>
       <li>
-        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/contacts">Home</NavLink>
       </li>
       {token ? (
         <li>

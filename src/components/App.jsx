@@ -25,8 +25,8 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Navigate replace to="/home" />} />
-            <Route path="/home" element={<ContactsPage />} />
+            <Route index element={<Navigate replace to="/contacts" />} />
+            <Route path="/contacts" element={<ContactsPage />} />
           </Route>
 
           <Route path="/login" element={<LoginPage />} />

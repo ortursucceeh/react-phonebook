@@ -73,7 +73,7 @@ function ContactForm() {
           />
         </div>
         <button type="submit" className="btn btn-primary mt-3">
-          Add Contact
+          Add contact
         </button>
       </form>
     </div>

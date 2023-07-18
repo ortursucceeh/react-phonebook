@@ -16,7 +16,7 @@ function UserMenu() {
     e.preventDefault();
     dispatch(logoutThunk(token)).then(() => {
       toast.success('You was successfully logged out!');
-      navigate('/home');
+      navigate('/contacts');
     });
   }
 
