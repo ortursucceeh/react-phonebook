@@ -22,7 +22,7 @@ function ContactForm() {
     const number = form.number.value;
 
     if (contacts.some(contact => contact.name === name)) {
-      return toast.error(`${name} already in contacts.🙂`);
+      return toast.error(`${name} is already in contacts🙂`);
     }
 
     const newContact = {
