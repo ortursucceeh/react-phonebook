@@ -12,6 +12,7 @@ import PageNotFound from 'pages/PageNotFound';
 import LoginPage from 'pages/LoginPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import HomePage from 'pages/HomePage';
+import PublicRoute from './PublicRoute/PublicRoute';
 
 function App() {
   return (
@@ -32,8 +33,22 @@ function App() {
               <Route path="/home" element={<HomePage />} />
             </Route>
 
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegistrationPage />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <PublicRoute>
+                  <RegistrationPage />
+                </PublicRoute>
+              }
+            />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
