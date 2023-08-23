@@ -11,7 +11,7 @@ type FormFields = {
   password: HTMLInputElement;
 };
 
-function Login() {
+const Login: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { isLoading } = useAuth();
@@ -73,6 +73,6 @@ function Login() {
       </form>
     </div>
   );
-}
+};
 
 export default Login;

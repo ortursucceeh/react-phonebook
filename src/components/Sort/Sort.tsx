@@ -2,7 +2,7 @@ import { setSortStatus } from 'redux/contacts/SortSlice';
 import { sortStatuses } from '../../redux/constants';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 
-function Sort() {
+const Sort: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const handleSortChange: React.ChangeEventHandler<HTMLSelectElement> = e => {
@@ -23,6 +23,6 @@ function Sort() {
       </select>
     </div>
   );
-}
+};
 
 export default Sort;

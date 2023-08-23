@@ -14,7 +14,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import HomePage from 'pages/HomePage';
 import PublicRoute from './PublicRoute/PublicRoute';
 
-function App() {
+const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Toaster />
@@ -55,6 +55,6 @@ function App() {
       </PersistGate>
     </Provider>
   );
-}
+};
 
 export default App;

@@ -50,29 +50,3 @@ const contactsSlice = createSlice({
 });
 
 export default contactsSlice.reducer;
-
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
-
-// const handleFulfilled = state => {
-//   state.isLoading = false;
-//   state.error = '';
-// };
-
-// const handleFulfilledGet = (state, { payload }) => {
-//   state.contacts = payload;
-// };
-
-// const handleFulfilledCreate = (state, { payload }) => {
-//   state.contacts.push(payload);
-// };
-
-// const handleFulfilledDel = (state, { payload }) => {
-//   state.contacts = state.contacts.filter(contact => contact.id !== payload.id);
-// };
-
-// const handleRejected = (state, { payload }) => {
-//   state.isLoading = false;
-//   state.error = payload;
-// };

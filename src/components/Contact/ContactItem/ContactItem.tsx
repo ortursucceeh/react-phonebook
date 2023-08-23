@@ -10,14 +10,14 @@ const ContactItem: React.FC<Contact> = ({ id, name, number }) => {
   const dispatch = useAppDispatch();
   const { token } = useAuth();
 
-  function removeContact(id: number): void {
+  const removeContact = (id: number): void => {
     if (token)
       dispatch(deleteContactThunk({ id, token })).then(() => {
         toast(`Contact ${name} was deleted!`, {
           icon: '💥',
         });
       });
-  }
+  };
 
   return (
     <li className={`${css.contact} list-group-item`}>

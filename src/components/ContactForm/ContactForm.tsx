@@ -14,13 +14,13 @@ type FormFields = {
   number: HTMLInputElement;
 };
 
-function ContactForm() {
+const ContactForm: React.FC = () => {
   const [nameValue, setNameValue] = useState<string>('');
   const [numberValue, setNumberValue] = useState<string>('');
 
   const dispatch = useAppDispatch();
   const contacts: Contact[] = useAppSelector(selectContacts);
-  const { token, email } = useAuth();
+  const { token } = useAuth();
 
   const handleSubmit: React.FormEventHandler<
     HTMLFormElement & FormFields
@@ -30,10 +30,6 @@ function ContactForm() {
     const form = e.currentTarget;
     const name = form.name.value;
     const number = form.number.value;
-    console.log('name :>> ', name);
-    console.log('number :>> ', number);
-    console.log('token :>> ', token);
-    console.log('email :>> ', email);
 
     if (contacts.some(contact => contact.name === name)) {
       return toast.error(`${name} is already in contacts🙂`);
@@ -93,6 +89,6 @@ function ContactForm() {
       </form>
     </div>
   );
-}
+};
 
 export default ContactForm;

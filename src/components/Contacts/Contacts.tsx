@@ -9,7 +9,7 @@ import ContactForm from '../ContactForm/ContactForm';
 import Spinner from '../Spinner/Spinner';
 import Sort from '../Sort/Sort';
 
-function Contacts() {
+const Contacts: React.FC = () => {
   const { contacts, isLoading, error } = useContacts();
 
   return (
@@ -40,6 +40,6 @@ function Contacts() {
       )}
     </div>
   );
-}
+};
 
 export default Contacts;

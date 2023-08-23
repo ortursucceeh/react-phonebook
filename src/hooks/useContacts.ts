@@ -10,7 +10,7 @@ import { useAuth } from './useAuth';
 import { useAppSelector } from './useAppSelector';
 import { useAppDispatch } from './useAppDispatch';
 
-export function useContacts() {
+export const useContacts = () => {
   const dispatch = useAppDispatch();
 
   const contacts = useAppSelector(selectContacts);
@@ -23,4 +23,4 @@ export function useContacts() {
   }, [dispatch, token]);
 
   return { contacts, isLoading, error };
-}
+};

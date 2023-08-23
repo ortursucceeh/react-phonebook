@@ -1,7 +1,7 @@
 import Contacts from 'components/Contacts/Contacts';
 
-function ContactsPage() {
+const ContactsPage: React.FC = () => {
   return <Contacts />;
-}
+};
 
 export default ContactsPage;

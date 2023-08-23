@@ -4,7 +4,7 @@ import React from 'react';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useAppSelector } from 'hooks/useAppSelector';
 
-function Filter() {
+const Filter: React.FC = () => {
   const dispatch = useAppDispatch();
   const filter = useAppSelector(selectFilter);
 
@@ -26,6 +26,6 @@ function Filter() {
       />
     </div>
   );
-}
+};
 
 export default Filter;

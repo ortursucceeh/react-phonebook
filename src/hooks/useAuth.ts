@@ -1,6 +1,6 @@
 import { useAppSelector } from './useAppSelector';
 
-export function useAuth() {
+export const useAuth = () => {
   const { email, token, name, isLoading } = useAppSelector(state => {
     console.log('state', state);
     return state.auth;
@@ -13,4 +13,4 @@ export function useAuth() {
     token,
     isLoading,
   };
-}
+};

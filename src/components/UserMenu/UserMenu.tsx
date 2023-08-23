@@ -7,7 +7,7 @@ import { logoutThunk } from 'redux/auth/authThunks';
 import styles from './UserMenu.module.css';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 
-function UserMenu() {
+const UserMenu: React.FC = () => {
   const { token, email, name } = useAuth();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -33,6 +33,6 @@ function UserMenu() {
       </button>
     </div>
   );
-}
+};
 
 export default UserMenu;

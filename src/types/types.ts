@@ -13,12 +13,6 @@ export type User = {
   token: string;
 };
 
-export enum STATUS_ENUM {
-  PENDING = 'pending',
-  FULFILLED = 'fulfilled',
-  REJECTED = 'rejected',
-}
-
 export type UserResponse = {
   token: string;
   user: {
@@ -26,3 +20,9 @@ export type UserResponse = {
     email: string;
   };
 };
+
+export enum STATUS_ENUM {
+  PENDING = 'pending',
+  FULFILLED = 'fulfilled',
+  REJECTED = 'rejected',
+}

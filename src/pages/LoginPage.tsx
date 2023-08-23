@@ -1,7 +1,7 @@
 import Login from 'components/Login/Login';
 
-function LoginPage() {
+const LoginPage: React.FC = () => {
   return <Login />;
-}
+};
 
 export default LoginPage;

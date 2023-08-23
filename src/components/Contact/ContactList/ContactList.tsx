@@ -4,7 +4,7 @@ import { selectSortedContacts } from 'redux/contacts/contactsSelectors';
 import { Contact } from 'types/types';
 import { useAppSelector } from 'hooks/useAppSelector';
 
-function Contacts() {
+const Contacts: React.FC = () => {
   const contacts: Contact[] = useAppSelector(selectSortedContacts);
 
   return (
@@ -21,6 +21,6 @@ function Contacts() {
       </ul>
     </div>
   );
-}
+};
 
 export default Contacts;

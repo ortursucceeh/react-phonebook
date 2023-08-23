@@ -2,7 +2,7 @@ import { User } from 'types/types';
 
 const API_URL = 'https://connections-api.herokuapp.com';
 
-export async function login(body: Omit<User, 'name' | 'token'>) {
+export const login = async (body: Omit<User, 'name' | 'token'>) => {
   const options = {
     method: 'POST',
     headers: {
@@ -13,9 +13,9 @@ export async function login(body: Omit<User, 'name' | 'token'>) {
 
   const data = await fetch(`${API_URL}/users/login`, options);
   return await data.json();
-}
+};
 
-export async function signup(body: Omit<User, 'token'>) {
+export const signup = async (body: Omit<User, 'token'>) => {
   const options = {
     method: 'POST',
     headers: {
@@ -26,9 +26,9 @@ export async function signup(body: Omit<User, 'token'>) {
 
   const data = await fetch(`${API_URL}/users/signup`, options);
   return await data.json();
-}
+};
 
-export async function logout(token: string) {
+export const logout = async (token: string) => {
   const options = {
     method: 'POST',
     headers: {
@@ -39,4 +39,4 @@ export async function logout(token: string) {
 
   const data = await fetch(`${API_URL}/users/logout`, options);
   return await data.json();
-}
+};

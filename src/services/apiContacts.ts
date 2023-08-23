@@ -2,7 +2,7 @@ import { NewContact } from 'types/types';
 
 const BASE_URL = 'https://connections-api.herokuapp.com';
 
-export async function getContacts(token: string) {
+export const getContacts = async (token: string) => {
   const options = {
     headers: {
       'Content-Type': 'application/json',
@@ -11,9 +11,9 @@ export async function getContacts(token: string) {
   };
   const data = await fetch(`${BASE_URL}/contacts`, options);
   return await data.json();
-}
+};
 
-export async function createContact(data: NewContact, token: string) {
+export const createContact = async (data: NewContact, token: string) => {
   const options = {
     method: 'POST',
     headers: {
@@ -25,9 +25,9 @@ export async function createContact(data: NewContact, token: string) {
 
   const res = await fetch(`${BASE_URL}/contacts`, options);
   return await res.json();
-}
+};
 
-export async function deleteContact(id: number, token: string) {
+export const deleteContact = async (id: number, token: string) => {
   const options = {
     method: 'DELETE',
     headers: {
@@ -38,4 +38,4 @@ export async function deleteContact(id: number, token: string) {
   const res = await fetch(`${BASE_URL}/contacts/${id}`, options);
 
   return await res.json();
-}
+};

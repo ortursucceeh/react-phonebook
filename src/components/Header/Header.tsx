@@ -4,7 +4,7 @@ import css from './Header.module.css';
 import { useAuth } from 'hooks/useAuth';
 import UserMenu from 'components/UserMenu/UserMenu';
 
-function Header() {
+const Header: React.FC = () => {
   const { token } = useAuth();
 
   return (
@@ -25,6 +25,6 @@ function Header() {
       )}
     </nav>
   );
-}
+};
 
 export default Header;

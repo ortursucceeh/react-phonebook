@@ -12,7 +12,7 @@ type FormFields = {
   password: HTMLInputElement;
 };
 
-function Register() {
+const Register: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isLoading } = useAuth();
@@ -92,6 +92,6 @@ function Register() {
       </form>
     </div>
   );
-}
+};
 
 export default Register;
